@@ -1,0 +1,33 @@
+<div class="d-flex border border-dark">
+    <div style="width: 200px; height: 95vh;" class="sidebar bg-info p-3 d-flex flex-column">
+        <a routerLink="/home">Home</a>
+        <a routerLink="/users">Users</a>
+    </div>
+
+    <div class="dashboard p-3 w-100">
+      <div class="row mt-4">
+        <div class="col-lg-8">
+            <div  style="height: 120px; background: url('https://www.pngmagic.com/product_images/youtube-banner-background-2048x1152.jpg'); background-size: cover; color: antiquewhite; ">
+                <h1 style="padding-top: 2rem; padding-left: 1rem;">Welcome <span>{{adminName}}</span></h1>
+            </div>
+            <div class="d-flex mt-3">
+                <div style="height: 400px;" class="col-lg-5 border rounded">
+                    <h5 class="p-2"><app-inline-calender></app-inline-calender></h5>
+                </div>
+                <div class="col-lg-1"></div>
+                <div style="height: 400px;" class="col-lg-6 border rounded ms-auto">
+                    <h5 class="p-2"><app-chart></app-chart></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div style="height: 350px" class="admin-details rounded border p-2 mt-4">
+                <app-edit-admin (onUpdate)="updateAdminName($event)"></app-edit-admin>
+            </div>
+            <div style="height: 150px; background: url('https://www.pngmagic.com/product_images/youtube-banner-background-2048x1152.jpg')" class="random-user border rounded mt-2 p-2 align-items-center d-flex justify-content-center fs-4 ">
+            <h2><i class="fa-users fa-solid me-2"></i>Employees : <span class="ms-2">{{totalUserCount}}</span></h2>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

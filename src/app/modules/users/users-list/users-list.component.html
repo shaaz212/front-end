@@ -1,0 +1,54 @@
+<div class="d-flex border border-light">
+    <div style="width: 200px; height: 95vh;"  class="sidebar bg-info p-3 d-flex flex-column">
+        <a routerLink='/home'>HOME</a>
+        <a routerLink='/users'>USERS</a>
+    </div>
+    <div class="dashboard p-3 w-100 mt-3">
+            <div class="title d-flex justify-content-between">
+                <h1>Users List</h1>
+                <button routerLink="add" class="btn btn-outline-warning "><i class="fa-solid fa-user-plus"></i>Add</button>
+            </div>
+            <div class="m-3 align-items-center d-flex">
+                <!-- sort drpdown -->
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     Sort
+                    </a>
+                  
+                    <ul class="dropdown-menu">
+                      <li ><button (click)="sortById()" class="dropdown-item text-dark" href="#" type="button">By Id</button></li>
+                      <li><button (click)="sortByName()" class="dropdown-item text-dark" href="#">By Name</button></li>
+                    </ul>
+                </div>
+                <!-- download -->
+                <button (click)="generatePDF()" class="btn btn-success ms-auto">Export</button>
+            </div>
+            <div class="table mt-5">
+                <table id="userTable" class="table shadow border p-2">
+                  <thead>
+                        <tr>
+                            <th>User id</th>
+                            <th>User name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of allUsers" [hidden]="user.id===1">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td><span [ngClass]="user.active=='1'?'btn btn-success':'btn btn-danger'">{{user.active=="1"?"Active":"InActive"}}</span></td>
+                        <th>
+                            <!-- edit -->
+                            <a routerLink="edit/{{user.id}}"><i class="fa-solid fa-pen text-success me-2  btn"></i></a>
+                            <!-- delete -->
+                            <i (click)="deleteUser(user.id)" class="fa-solid fa-trash text-danger  btn"></i>
+                        </th>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+    </div>
+</div>
